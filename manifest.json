@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "Music Link Redirection",
+  "version": "1.0",
+  "description": "Redirect Spotify, YouTube Music and more to your prefered streaming service, powered by Linktree Songlink/Odesli",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://open.spotify.com/*",
+    "*://music.youtube.com/*",
+    "storage"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.svg"
+  }
+}

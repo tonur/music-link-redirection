@@ -1,0 +1,1007 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "entityUniqueId": {
+      "type": "string"
+    },
+    "userCountry": {
+      "type": "string"
+    },
+    "pageUrl": {
+      "type": "string"
+    },
+    "entitiesByUniqueId": {
+      "type": "object",
+      "properties": {
+        "AMAZON_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "AUDIOMACK_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "ANGHAMI_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "BOOMPLAY_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "DEEZER_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "ITUNES_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "NAPSTER_SONG::tra.X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "PANDORA_SONG::TR:X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "SOUNDCLOUD_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "SPOTIFY_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "TIDAL_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "YANDEX_SONG::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        },
+        "YOUTUBE_VIDEO::X": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "artistName": {
+              "type": "string"
+            },
+            "thumbnailUrl": {
+              "type": "string"
+            },
+            "thumbnailWidth": {
+              "type": "integer"
+            },
+            "thumbnailHeight": {
+              "type": "integer"
+            },
+            "apiProvider": {
+              "type": "string"
+            },
+            "platforms": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "type",
+            "title",
+            "artistName",
+            "thumbnailUrl",
+            "thumbnailWidth",
+            "thumbnailHeight",
+            "apiProvider",
+            "platforms"
+          ]
+        }
+      }
+    },
+    "linksByPlatform": {
+      "type": "object",
+      "properties": {
+        "amazonMusic": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "amazonStore": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "audiomack": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "anghami": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "boomplay": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "deezer": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "appleMusic": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "nativeAppUriMobile": {
+              "type": "string"
+            },
+            "nativeAppUriDesktop": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "nativeAppUriMobile",
+            "nativeAppUriDesktop",
+            "entityUniqueId"
+          ]
+        },
+        "itunes": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "nativeAppUriMobile": {
+              "type": "string"
+            },
+            "nativeAppUriDesktop": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "nativeAppUriMobile",
+            "nativeAppUriDesktop",
+            "entityUniqueId"
+          ]
+        },
+        "napster": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "pandora": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "soundcloud": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "tidal": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "yandex": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "youtube": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "youtubeMusic": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "entityUniqueId"
+          ]
+        },
+        "spotify": {
+          "type": "object",
+          "properties": {
+            "country": {
+              "type": "string"
+            },
+            "url": {
+              "type": "string"
+            },
+            "nativeAppUriDesktop": {
+              "type": "string"
+            },
+            "entityUniqueId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "country",
+            "url",
+            "nativeAppUriDesktop",
+            "entityUniqueId"
+          ]
+        }
+      },
+      "required": [
+        "amazonMusic",
+        "amazonStore",
+        "audiomack",
+        "anghami",
+        "boomplay",
+        "deezer",
+        "appleMusic",
+        "itunes",
+        "napster",
+        "pandora",
+        "soundcloud",
+        "tidal",
+        "yandex",
+        "youtube",
+        "youtubeMusic",
+        "spotify"
+      ]
+    }
+  },
+  "required": [
+    "entityUniqueId",
+    "userCountry",
+    "pageUrl",
+    "entitiesByUniqueId",
+    "linksByPlatform"
+  ]
+}
