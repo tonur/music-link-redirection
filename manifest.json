@@ -7,7 +7,8 @@
     "webRequest",
     "webRequestBlocking",
     "*://open.spotify.com/*",
-    "*://music.youtube.com/*",
+    "*://music.youtube.com/match*",
+    "https://api.song.link/*",
     "storage"
   ],
   "background": {
