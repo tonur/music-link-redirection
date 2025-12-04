@@ -22,10 +22,25 @@ jobs:
   build:
     name: Build XPI
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      major: ${{ steps.version.outputs.major }}
+      minor: ${{ steps.version.outputs.minor }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Read version from manifest.json
+        id: version
+        run: |
+          VERSION=$(jq -r '.version' manifest.json)
+          MAJ=$(echo "$VERSION" | cut -d. -f1)
+          MIN=$(echo "$VERSION" | cut -d. -f2)
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "major=$MAJ" >> $GITHUB_OUTPUT
+          echo "minor=$MIN" >> $GITHUB_OUTPUT
 
       - name: Build extension
         id: web-ext-build
@@ -52,9 +67,6 @@ jobs:
     if: github.ref_type == 'branch' && (github.ref_name == 'main' || github.ref_name == 'master')
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Download built XPI
         uses: actions/download-artifact@v4
         with:
@@ -70,10 +82,9 @@ jobs:
       - name: Read version from manifest.json
         id: version
         run: |
-          VERSION=$(jq -r '.version' src/manifest.json)
-
-          MAJ=$(echo "$VERSION" | cut -d. -f1)
-          MIN=$(echo "$VERSION" | cut -d. -f2)
+          VERSION="${{ needs.build.outputs.version }}"
+          MAJ="${{ needs.build.outputs.major }}"
+          MIN="${{ needs.build.outputs.minor }}"
 
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "major=$MAJ" >> $GITHUB_OUTPUT
@@ -128,6 +139,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # --- Generate changelog from commits since previous tag ---
+      - name: Generate changelog
+        id: changelog
+        run: |
+          LAST_TAG=$(git describe --tags --abbrev=0 --always HEAD^ 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            echo "changelog=$(git log --pretty=format:'- %s')" >> $GITHUB_OUTPUT
+          else
+            echo "changelog=$(git log $LAST_TAG..HEAD --pretty=format:'- %s')" >> $GITHUB_OUTPUT
+          fi
+
       - name: Download built XPI
         uses: actions/download-artifact@v4
         with:
@@ -155,17 +177,6 @@ jobs:
           channel: listed
           apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
           apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
-
-      # --- Generate changelog from commits since previous tag ---
-      - name: Generate changelog
-        id: changelog
-        run: |
-          LAST_TAG=$(git describe --tags --abbrev=0 --always HEAD^ 2>/dev/null || echo "")
-          if [ -z "$LAST_TAG" ]; then
-            echo "changelog=$(git log --pretty=format:'- %s')" >> $GITHUB_OUTPUT
-          else
-            echo "changelog=$(git log $LAST_TAG..HEAD --pretty=format:'- %s')" >> $GITHUB_OUTPUT
-          fi
 
       - name: Upload signed XPI to GitHub Release
         env:
