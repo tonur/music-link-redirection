@@ -36,6 +36,16 @@ jobs:
           filename: "{name}-{version}.xpi"
           ignoreFiles: '[ ]'
 
+      - name: Sign extension (Firefox AMO)
+        id: web-ext-sign
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: sign
+          source: .
+          channel: listed
+          apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -61,14 +71,41 @@ jobs:
           name: built-xpi
           path: xpi
 
-      - name: Determine next prerelease tag
+      - name: Read version from manifest.json
         id: version
         run: |
-          VERSION_RAW="${GITHUB_REF_NAME#v}"   # Strip "v" if present
-          MAJ=$(echo "$VERSION_RAW" | cut -d. -f1)
-          MIN=$(echo "$VERSION_RAW" | cut -d. -f2)
+          VERSION=$(jq -r '.version' src/manifest.json)
 
-          TAG="pre-$MAJ.$MIN-$(date +'%Y%m%d%H%M%S')"
+          MAJ=$(echo "$VERSION" | cut -d. -f1)
+          MIN=$(echo "$VERSION" | cut -d. -f2)
+
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "major=$MAJ" >> $GITHUB_OUTPUT
+          echo "minor=$MIN" >> $GITHUB_OUTPUT
+
+      - name: Check if full release exists
+        id: check_release
+        run: |
+          if gh release view "v${{ steps.version.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Fail if full release already exists
+        if: steps.check_release.outputs.exists == 'true'
+        run: |
+          echo "Version ${{ steps.version.outputs.version }} is already released. Aborting prerelease."
+          exit 1
+
+      - name: Generate prerelease tag
+        id: prerelease_tag
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          TIMESTAMP=$(date +'%Y%m%d%H%M%S')
+          TAG="pre-$VERSION-$TIMESTAMP"
 
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
@@ -111,16 +148,6 @@ jobs:
           else
             echo "changelog=$(git log $LAST_TAG..HEAD --pretty=format:'- %s')" >> $GITHUB_OUTPUT
           fi
-
-      - name: Sign extension (Firefox AMO)
-        id: web-ext-sign
-        uses: kewisch/action-web-ext@v1
-        with:
-          cmd: sign
-          source: .
-          channel: listed
-          apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
-          apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
 
       - name: Upload signed XPI to GitHub Release
         env:
