@@ -11,6 +11,11 @@ on:
     branches:
       - main
       - master
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. 1.2.0)"
+        required: true
 
 permissions:
   contents: write
@@ -132,6 +137,27 @@ jobs:
   # --------------------------------------------------------------------
   # 3) OFFICIAL RELEASE — signing + AMO upload — only for tags
   # --------------------------------------------------------------------
+  tag_release:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create tag
+        run: |
+          VERSION="${{ github.event.inputs.version }}"
+          TAG="v$VERSION"
+
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag "$TAG"
+          git push origin "$TAG"
+
+      - name: Done
+        run: echo "Tagged version v${{ github.event.inputs.version }}"
+
   release:
     name: Sign & Publish Release
     runs-on: ubuntu-latest
