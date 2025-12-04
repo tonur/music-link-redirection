@@ -61,12 +61,18 @@ jobs:
           name: built-xpi
           path: xpi
 
+      - name: Extract artifact if needed
+        run: |
+          if ls xpi/*.zip 1> /dev/null 2>&1; then
+            unzip xpi/*.zip -d xpi/
+          fi
+
       - name: Sign extension (Firefox AMO)
         id: web-ext-sign
         uses: kewisch/action-web-ext@v1
         with:
           cmd: sign
-          source: web-ext-artifacts/*.xpi
+          source: xpi/*.xpi
           channel: unlisted
           apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
           apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
@@ -138,12 +144,18 @@ jobs:
           name: built-xpi
           path: .
 
+      - name: Extract artifact if needed
+        run: |
+          if ls xpi/*.zip 1> /dev/null 2>&1; then
+            unzip xpi/*.zip -d xpi/
+          fi
+
       - name: Sign extension (Firefox AMO)
         id: web-ext-sign
         uses: kewisch/action-web-ext@v1
         with:
           cmd: sign
-          source: web-ext-artifacts/*.xpi
+          source: xpi/*.xpi
           channel: listed
           apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
           apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
