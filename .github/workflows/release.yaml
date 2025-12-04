@@ -36,16 +36,6 @@ jobs:
           filename: "{name}-{version}.xpi"
           ignoreFiles: '[ ]'
 
-      - name: Sign extension (Firefox AMO)
-        id: web-ext-sign
-        uses: kewisch/action-web-ext@v1
-        with:
-          cmd: sign
-          source: .
-          channel: listed
-          apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
-          apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
-
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -70,6 +60,16 @@ jobs:
         with:
           name: built-xpi
           path: xpi
+
+      - name: Sign extension (Firefox AMO)
+        id: web-ext-sign
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: sign
+          source: web-ext-artifacts/*.xpi
+          channel: unlisted
+          apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
 
       - name: Read version from manifest.json
         id: version
@@ -137,6 +137,16 @@ jobs:
         with:
           name: built-xpi
           path: .
+
+      - name: Sign extension (Firefox AMO)
+        id: web-ext-sign
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: sign
+          source: web-ext-artifacts/*.xpi
+          channel: listed
+          apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
+          apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
 
       # --- Generate changelog from commits since previous tag ---
       - name: Generate changelog
