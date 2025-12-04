@@ -12,10 +12,6 @@ on:
       - main
       - master
   workflow_dispatch:
-    inputs:
-      version:
-        description: "Release version (e.g. 1.2.0)"
-        required: true
 
 permissions:
   contents: write
@@ -137,27 +133,6 @@ jobs:
   # --------------------------------------------------------------------
   # 3) OFFICIAL RELEASE — signing + AMO upload — only for tags
   # --------------------------------------------------------------------
-  tag_release:
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Create tag
-        run: |
-          VERSION="${{ github.event.inputs.version }}"
-          TAG="v$VERSION"
-
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git tag "$TAG"
-          git push origin "$TAG"
-
-      - name: Done
-        run: echo "Tagged version v${{ github.event.inputs.version }}"
-
   release:
     name: Sign & Publish Release
     runs-on: ubuntu-latest
@@ -215,3 +190,40 @@ jobs:
             --title "${{ github.ref_name }}" \
             --notes "${{ steps.changelog.outputs.changelog }}" \
             "${{ steps.web-ext-sign.outputs.target }}"
+
+  # --------------------------------------------------------------------
+  # 4) MANUAL TAG CREATION — triggers official release
+  # --------------------------------------------------------------------
+  create_tag:
+    name: Create Release Tag
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # required to push tags
+
+      - name: Read version from manifest.json
+        id: manifest
+        run: |
+          VERSION=$(jq -r '.version' manifest.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create git tag
+        run: |
+          TAG="v${{ steps.manifest.outputs.version }}"
+          echo "Creating tag: $TAG"
+
+          # Check if tag already exists
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "::error::Tag $TAG already exists."
+            exit 1
+          fi
+
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+          git tag "$TAG"
+          git push origin "$TAG"
