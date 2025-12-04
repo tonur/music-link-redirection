@@ -12,6 +12,9 @@ on:
       - main
       - master
 
+permissions:
+  contents: write
+
 jobs:
   # --------------------------------------------------------------------
   # 1) BUILD JOB — runs for PRs, pushes, and tags
