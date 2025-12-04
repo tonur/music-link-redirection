@@ -61,6 +61,8 @@ jobs:
           name: built-xpi
           path: xpi
 
+      - name: List downloaded files
+        run: ls -R xpi
       - name: Extract artifact if needed
         run: |
           if ls xpi/*.zip 1> /dev/null 2>&1; then
