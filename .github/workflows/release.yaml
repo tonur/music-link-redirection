@@ -49,6 +49,9 @@ jobs:
     if: github.ref_type == 'branch' && (github.ref_name == 'main' || github.ref_name == 'master')
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Download built XPI
         uses: actions/download-artifact@v4
         with:
@@ -58,12 +61,13 @@ jobs:
       - name: Determine next prerelease tag
         id: version
         run: |
-          LAST_TAG=$(git describe --tags --match "pre-*" --abbrev=0 2>/dev/null || echo "pre-0.0.0")
-          IFS='.' read -ra PART <<< "${LAST_TAG#pre-}"
-          MAJ=${PART[0]}
-          MIN=${PART[1]}
-          PATCH=$((PART[2] + 1))
-          echo "tag=pre-$MAJ.$MIN.$PATCH" >> $GITHUB_OUTPUT
+          VERSION_RAW="${GITHUB_REF_NAME#v}"   # Strip "v" if present
+          MAJ=$(echo "$VERSION_RAW" | cut -d. -f1)
+          MIN=$(echo "$VERSION_RAW" | cut -d. -f2)
+
+          TAG="pre-$MAJ.$MIN-$(date +'%Y%m%d%H%M%S')"
+
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
 
       - name: Create Pre-Release
         env:
