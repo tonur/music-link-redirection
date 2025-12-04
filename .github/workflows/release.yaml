@@ -67,22 +67,6 @@ jobs:
             unzip xpi/*.zip -d xpi/
           fi
 
-      - name: Determine XPI filename
-        id: xpi
-        run: |
-          FILE=$(ls xpi/*.xpi | head -n 1)
-          echo "file=$FILE" >> $GITHUB_OUTPUT
-
-      - name: Sign extension (Firefox AMO)
-        id: web-ext-sign
-        uses: kewisch/action-web-ext@v1
-        with:
-          cmd: sign
-          source: ${{ steps.xpi.outputs.file }}
-          channel: unlisted
-          apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
-          apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
-
       - name: Read version from manifest.json
         id: version
         run: |
@@ -125,9 +109,9 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create ${{ steps.version.outputs.tag }} \
+          gh release create ${{ steps.prerelease_tag.outputs.tag }} \
             --prerelease \
-            --title "Pre-Release ${{ steps.version.outputs.tag }}" \
+            --title "Pre-Release ${{ steps.prerelease_tag.outputs.tag }}" \
             --notes "Automated prerelease" \
             xpi/*.xpi
 
