@@ -1,0 +1,11 @@
+{
+  "version": { "license": "Unlicense" },
+  "requires_payment": false,
+  "categories": { "firefox": ["music", "spotify", "youtube music"] },
+  "homepage": {
+    "en-US": "https://github.com/tonur/music-link-redirection"
+  },
+  "support_email": {
+    "en-US": "music-link-redirection@kragh.dev"
+  }
+}

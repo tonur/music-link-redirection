@@ -218,6 +218,11 @@ jobs:
           channel: listed
           apiKey: ${{ secrets.FIREFOX_JWT_ISSUER }}
           apiSecret: ${{ secrets.FIREFOX_JWT_SECRET }}
+          metaDataFile: amo_metadata.json
+          approvalNotes: "Please find more information at https://github.com/tonur/music-link-redirection"
+          releaseNotes: ${{ steps.changelog.outputs.changelog }}
+          license: Unlicense
+          licenseFile: LICENSE
 
       - name: Upload signed XPI to GitHub Release
         env:
