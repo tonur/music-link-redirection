@@ -4,11 +4,12 @@
   "version": "0.1",
   "description": "Redirect Spotify, YouTube Music and more to your prefered streaming service, powered by Linktree Songlink/Odesli",
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
     "*://open.spotify.com/*",
     "*://music.youtube.com/match*",
     "https://api.song.link/*",
+    "data_collection_permissions",
+    "webRequest",
+    "webRequestBlocking",
     "storage"
   ],
   "background": {
