@@ -26,16 +26,14 @@
       "id": "music-link-redirection@kragh.dev",
       "strict_min_version": "60.0",
       "data_collection_permissions": {
-        "required": [],
-        "optional": []
+        "required": ["none"]
        }
     },
     "gecko_android": {
       "id": "music-link-redirection@kragh.dev",
       "strict_min_version": "120.0",
       "data_collection_permissions": {
-        "required": [],
-        "optional": []
+        "required": ["none"]
        }
     }
   }
