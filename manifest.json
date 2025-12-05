@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Music Link Redirection",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Redirect Spotify, YouTube Music and more to your prefered streaming service, powered by Linktree Songlink/Odesli",
   "permissions": [
     "*://open.spotify.com/*",
@@ -26,6 +26,10 @@
     "gecko": {
       "id": "music-link-redirection@kragh.dev",
       "strict_min_version": "60.0"
+    },
+    "gecko_android": {
+      "id": "music-link-redirection@kragh.dev",
+      "strict_min_version": "120.0"
     }
   }
 }
