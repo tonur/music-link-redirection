@@ -6,14 +6,9 @@
   "description": {
     "en-US": "Redirect Spotify, YouTube Music and more to your prefered streaming service, powered by Linktree Songlink/Odesli.\n\nInspired by [Spotify to YT Music Redirect by Arael](https://addons.mozilla.org/en-US/firefox/addon/spotify-to-yt-music-redirect/).\n\nThis extension relies solely on the [Linktree Odesli API](https://linktree.notion.site/API-d0ebe08a5e304a55928405eb682f6741).\n\nThe API is rate limited to 10 request per minute.\n\nIn the case that this stops working, this extension will too.\n"
   },
-  "categories": {
-    "firefox": [
-      "music"
-    ],
-    "android": [
-      "music"
-    ]
-  },
+  "categories": [
+    "other"
+  ],
   "homepage": {
     "en-US": "https://github.com/tonur/music-link-redirection"
   },
