@@ -7,7 +7,6 @@
     "*://open.spotify.com/*",
     "*://music.youtube.com/match*",
     "https://api.song.link/*",
-    "data_collection_permissions",
     "webRequest",
     "webRequestBlocking",
     "storage"
@@ -25,11 +24,19 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "music-link-redirection@kragh.dev",
-      "strict_min_version": "60.0"
+      "strict_min_version": "60.0",
+      "data_collection_permissions": {
+        "required": [],
+        "optional": []
+       }
     },
     "gecko_android": {
       "id": "music-link-redirection@kragh.dev",
-      "strict_min_version": "120.0"
+      "strict_min_version": "120.0",
+      "data_collection_permissions": {
+        "required": [],
+        "optional": []
+       }
     }
   }
 }
